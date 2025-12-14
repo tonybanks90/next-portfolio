@@ -23,6 +23,39 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      name: "company",
+      title: "Company",
+      type: "string",
+    }),
+    defineField({
+      name: "phone",
+      title: "Phone",
+      type: "string",
+    }),
+    defineField({
+      name: "budget",
+      title: "Budget",
+      type: "string",
+    }),
+    defineField({
+      name: "timeline",
+      title: "Timeline",
+      type: "string",
+    }),
+    defineField({
+      name: "priority",
+      title: "Priority",
+      type: "string",
+      options: {
+        list: [
+          { title: "Low", value: "low" },
+          { title: "Medium", value: "medium" },
+          { title: "High", value: "high" },
+        ],
+      },
+      initialValue: "medium",
+    }),
+    defineField({
       name: "message",
       title: "Message",
       type: "text",
@@ -68,9 +101,8 @@ export default defineType({
         archived: "📁",
       };
       return {
-        title: `${
-          statusEmoji[status as keyof typeof statusEmoji] || ""
-        } ${title}`,
+        title: `${statusEmoji[status as keyof typeof statusEmoji] || ""
+          } ${title}`,
         subtitle: subtitle,
       };
     },

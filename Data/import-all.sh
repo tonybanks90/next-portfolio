@@ -21,9 +21,9 @@ echo -e "${BLUE}╚════════════════════�
 echo ""
 
 # Check if sanity CLI is installed
-if ! command -v sanity &> /dev/null; then
-    echo -e "${RED}❌ Error: Sanity CLI is not installed.${NC}"
-    echo -e "${YELLOW}Please install it with: npm install -g @sanity/cli${NC}"
+if ! command -v npx &> /dev/null; then
+    echo -e "${RED}❌ Error: npx is not installed.${NC}"
+    echo -e "${YELLOW}Please install Node.js and npm.${NC}"
     exit 1
 fi
 
@@ -81,7 +81,7 @@ for FILE in "${FILES[@]}"; do
     if [ -f "$FILE" ]; then
         echo -e "${BLUE}[$CURRENT/$TOTAL] Importing ${FILE}...${NC}"
         
-        if sanity dataset import "$FILE" "$DATASET" --replace 2>&1 | grep -v "^npm"; then
+        if npx sanity dataset import "$FILE" "$DATASET" --replace 2>&1 | grep -v "^npm"; then
             echo -e "${GREEN}✓ Successfully imported ${FILE}${NC}"
         else
             echo -e "${RED}✗ Failed to import ${FILE}${NC}"
